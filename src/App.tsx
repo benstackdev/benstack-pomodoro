@@ -5,7 +5,7 @@ export function App() {
   return (
     <div className="flex flex-col min-h-svh p-6 max-w-xl mx-auto">
       <Header />
-      <Timer focusMinutes={0} focusSeconds={30} breakMinutes={2} breakSeconds={0} />
+      <Timer focusTime={90} breakTime={120} />
     </div>
   );
 }

@@ -14,20 +14,15 @@ const TimerState = {
 export type TimerStateType = (typeof TimerState)[keyof typeof TimerState];
 
 export type TimerProps = {
-  focusMinutes: number,
-  focusSeconds: number,
-  breakMinutes: number,
-  breakSeconds: number;
+  focusTime: number,
+  breakTime: number;
 };
 
 export function Timer({
-  focusMinutes: fminutes,
-  focusSeconds: fseconds,
-  breakMinutes: bminutes,
-  breakSeconds: bseconds
+  focusTime,
+  breakTime
 }: TimerProps) {
-  const [minutes, setMinutes] = useState<number>(fminutes);
-  const [seconds, setSeconds] = useState<number>(fseconds);
+  const [time, setTime] = useState<number>(focusTime);
   const [sessionCount, setSessionCount] = useState<number>(1);
   const [onBreak, setOnBreak] = useState<boolean>(false);
 
@@ -35,28 +30,29 @@ export function Timer({
 
   // Update timer
   const updateTimer = useCallback(() => {
-    if (seconds === 0) {
-      if (minutes === 0) {
-        setTimerState(TimerState.DONE);
-        setSessionCount(onBreak ? sessionCount + 1 : sessionCount);
-        setMinutes(onBreak ? fminutes : bminutes);
-        setSeconds(onBreak ? fseconds : bseconds);
-        setOnBreak(!onBreak);
-        return;
-      }
-      setSeconds(59);
-      setMinutes(minutes - 1);
+    if (time === 0) {
+      setTimerState(TimerState.DONE);
+      setSessionCount(onBreak ? sessionCount + 1 : sessionCount);
+      setTime(onBreak ? focusTime : breakTime);
+      setOnBreak(!onBreak);
       return;
     }
-
-    setSeconds(seconds - 1);
-  }, [bminutes, bseconds, fminutes, fseconds, onBreak, sessionCount, minutes, seconds, setMinutes, setSeconds, setTimerState, setSessionCount, setOnBreak]);
+    setTime(time - 1);
+  }, [onBreak, sessionCount, time, focusTime, breakTime, setTime, setTimerState, setSessionCount, setOnBreak]);
 
   // Update timer state
   const updateTimerState = () => {
     if (timerState === TimerState.RUNNING)
       setTimerState(TimerState.PAUSED);
     else setTimerState(TimerState.RUNNING);
+  };
+
+  // Get timer display
+  const timerDisplay = (): string => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    return `${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
   };
 
   useEffect(() => {
@@ -73,13 +69,13 @@ export function Timer({
         : timerState !== TimerState.RUNNING ? "bg-zinc-800" : ""
     )}>
       <CardContent className={cn("flex flex-col items-center gap-y-4")}>
-        <div className={cn("text-xl text-zinc-400")}>
+        <div className={cn("text-3xl text-zinc-300")}>
           {onBreak ? `Break #${sessionCount}` : `Session #${sessionCount}`}
         </div>
         <div className={cn("text-7xl font-mono")}>
-          {minutes < 10 ? "0" + minutes : minutes}:{seconds < 10 ? "0" + seconds : seconds}
+          {timerDisplay()}
         </div>
-        <Button className={cn("mt-4 text-xl w-1/3 min-w-30 h-12")} onClick={updateTimerState}>
+        <Button className={cn("mt-4 text-3xl w-1/3 min-w-30 h-14")} onClick={updateTimerState}>
           {timerState === TimerState.RUNNING
             ? (
               <div className={cn("flex flex-row items-center gap-x-2")}>
