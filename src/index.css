@@ -50,6 +50,10 @@
 
 :root {
     --background: oklch(1 0 0);
+    --background-timer: oklch(92% 0.004 286.32);
+    --background-timer-running: oklch(96.7% 0.001 286.375);
+    --background-timer-break: oklch(95% 0.052 163.051);
+    --background-timer-break-running: oklch(97.9% 0.021 166.113);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
@@ -85,6 +89,10 @@
 
 .dark {
     --background: oklch(0.145 0 0);
+    --background-timer: oklch(27.4% 0.006 286.033);
+    --background-timer-running: oklch(21% 0.006 285.885);
+    --background-timer-break: oklch(26.2% 0.051 172.552);
+    --background-timer-break-running: oklch(20.976% 0.0397 174.594);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);
