@@ -3,7 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Pause, Play, SkipForward } from "lucide-react";
-import { SETTING_EVENT, SettingsKeys } from "@/lib/settings";
+import { getSetting, SETTING_EVENT, SettingsKeys, type AlarmSoundsType } from "@/lib/settings";
+import { playSound } from "react-sounds";
 
 const TimerState = {
   READY: 0,
@@ -28,11 +29,26 @@ export function Timer() {
 
   const [timerState, setTimerState] = useState<TimerStateType>(TimerState.READY);
 
+  // Play alarm sound
+  const playAlarm = () => {
+    const alarmSound = getSetting(SettingsKeys.ALARM_SOUND) as AlarmSoundsType;
+
+    switch (alarmSound) {
+      case "bell":
+        playSound("/public/sounds/bell.mp3");
+        break;
+      case "digital":
+        playSound("/public/sounds/digital.mp3");
+        break;
+    }
+  };
+
   const timeFinished = useCallback(() => {
     setTimerState(TimerState.READY);
     setSessionCount(onBreak ? sessionCount + 1 : sessionCount);
     setTime(onBreak ? focusTime : breakTime);
     setOnBreak(!onBreak);
+    playAlarm();
   }, [onBreak, sessionCount, focusTime, breakTime, setOnBreak, setTimerState, setSessionCount]);
 
   // Update timer

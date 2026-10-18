@@ -23,6 +23,9 @@ importers:
       cn:
         specifier: ^0.4.0
         version: 0.4.0
+      howler:
+        specifier: ^2.2.4
+        version: 2.2.4
       lucide-react:
         specifier: ^1.49.0
         version: 1.49.0(@types/react@19.3.0)(react@19.3.0)
@@ -32,6 +35,9 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.3.0(react@19.3.0)
+      react-sounds:
+        specifier: ^1.0.30
+        version: 1.0.30(howler@2.2.4)(react@19.3.0)
       shadcn:
         specifier: ^4.21.1
         version: 4.21.1(typescript@6.0.3)
@@ -1263,6 +1269,9 @@ packages:
   hookified@2.2.0:
     resolution: {integrity: sha512-p/LgFzRN5FeoD3DLS6bkUapeye6E4SI6yJs6KetENd18S+FBthqYq2amJUWpt5z0EQwwHemidjY5OqJGEKm5uA==}
 
+  howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
+
   http-errors@2.0.1:
     resolution: {integrity: sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==}
     engines: {node: '>= 0.8'}
@@ -1944,6 +1953,13 @@ packages:
     resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
     peerDependencies:
       react: ^19.3.0
+
+  react-sounds@1.0.30:
+    resolution: {integrity: sha512-Wd+ttb38/GDV9f9kn/CmKcJGjbGffSPKwKPCo2AF0VOq3JPR86zOaK41nxI7ACRuUGPRUrlSwdfHN5+lbDX2Ew==}
+    hasBin: true
+    peerDependencies:
+      howler: ^2.2.3
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react@19.3.0:
     resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
@@ -3539,6 +3555,8 @@ snapshots:
 
   hookified@2.2.0: {}
 
+  howler@2.2.4: {}
+
   http-errors@2.0.1:
     dependencies:
       depd: 2.0.0
@@ -4027,6 +4045,11 @@ snapshots:
     dependencies:
       react: 19.3.0
       scheduler: 0.28.0
+
+  react-sounds@1.0.30(howler@2.2.4)(react@19.3.0):
+    dependencies:
+      howler: 2.2.4
+      react: 19.3.0
 
   react@19.3.0: {}
 
