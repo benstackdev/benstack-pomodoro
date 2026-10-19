@@ -35,10 +35,10 @@ export function Timer() {
 
     switch (alarmSound) {
       case "bell":
-        playSound("/public/sounds/bell.mp3");
+        playSound("/sounds/bell.mp3");
         break;
       case "digital":
-        playSound("/public/sounds/digital.mp3");
+        playSound("/sounds/digital.mp3");
         break;
     }
   };
