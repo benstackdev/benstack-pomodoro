@@ -33,12 +33,12 @@ export function AlarmSoundSelect({ alarmSound, setAlarmSound }: AlarmSoundSelect
   const {
     play: playDigital,
     stop: stopDigital
-  } = useSound("/public/sounds/digital.mp3");
+  } = useSound("/sounds/digital.mp3");
 
   const {
     play: playBell,
     stop: stopBell
-  } = useSound("/public/sounds/bell.mp3");
+  } = useSound("/sounds/bell.mp3");
 
   return (
     <Select items={AlarmSoundSelectItems}>

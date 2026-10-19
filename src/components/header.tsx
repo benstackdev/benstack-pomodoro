@@ -11,7 +11,7 @@ export function Header() {
     <div>
       <div className={cn("flex flex-1 items-center justify-between")}>
         <div className={cn("flex flex-row items-center gap-x-2 text-lg font-semibold")}>
-          <img src={theme === 'dark' ? "./src/assets/BenStackLogo_dark.svg" : "./src/assets/BenStackLogo_light.svg"} alt="" width={50} />
+          <img src={theme === 'dark' ? "/assets/BenStackLogo_dark.svg" : "/assets/BenStackLogo_light.svg"} alt="" width={50} />
           BenStack Pomodoro
         </div>
         <div className="flex flex-row gap-x-2">
