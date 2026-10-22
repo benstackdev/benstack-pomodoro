@@ -103,7 +103,7 @@ export function Timer() {
         : timerState !== TimerState.RUNNING ? "bg-(--background-timer)" : "bg-(--background-timer-running)"
     )}>
       <CardContent className={cn("flex flex-col items-center gap-y-4")}>
-        <div className={cn("text-2xl")}>
+        <div className={cn("text-4xl")}>
           {onBreak ? `Break #${sessionCount}` : `Session #${sessionCount}`}
         </div>
         <div className={cn("text-7xl font-mono")}>
